@@ -24,6 +24,7 @@ public class Manager : MonoBehaviour
     public bool trialDone = false;
     public string CurrentDoorType;
     public string GoNoGoState;
+    public List<string> GoNoGoList;
     public List<int> DoorCaseList;
 
     // [Header("Setting GameObjects")]
@@ -52,6 +53,14 @@ public class Manager : MonoBehaviour
             DoorCaseList = DoorCaseList.OrderBy(x => UnityEngine.Random.value).ToList();
         }
 
+        //Generating pseudo-randomized GoNoGo list
+        for (int i = 0; i < (TotalNumberTrials / 3); i++)
+        {
+            GoNoGoList.Add("Go");
+            GoNoGoList.Add("NoGo");
+            GoNoGoList = GoNoGoList.OrderBy(x => UnityEngine.Random.value).ToList();
+        }
+
         //Generating randomized list of time in dark
         System.Random rnd = new System.Random();
         for (int i = 0; i < TotalNumberTrials; i++)
@@ -72,7 +81,7 @@ public class Manager : MonoBehaviour
         isDark = true;
         DarkTimer = TimeInDarkList[CurrentTrial];
         LightTimer = TimeToImperativeList[CurrentTrial];
-        GoNoGoState = "Pending";
+        GoNoGoState = "";
     }
 
     // Update is called once per frame
@@ -82,10 +91,10 @@ public class Manager : MonoBehaviour
         //Setting current status
         if (DoorCaseList[CurrentTrial] == 1) {CurrentDoorType = "Narrow";}
         if (DoorCaseList[CurrentTrial] == 2) {CurrentDoorType = "Mid";}
-        if (DoorCaseList[CurrentTrial] == 3) {CurrentDoorType = "Narrow";}
+        if (DoorCaseList[CurrentTrial] == 3) {CurrentDoorType = "Wide";}
         if (isDark == false) {LightStatus = "LightsOn";}
         if (isDark == true) {LightStatus = "Dark";}
-        CurrentStatus = "#" + CurrentTrial.ToString() + "; " + CurrentDoorType + "; " + LightStatus + "; " + GoNoGoState;
+        CurrentStatus = "#" + CurrentTrial.ToString() + ";" + CurrentDoorType + ";" + LightStatus + ";" + GoNoGoState;
 
         //Countdown for dark
         if (DarkTimer >= 0 && isDark && !trialDone) {
@@ -105,6 +114,7 @@ public class Manager : MonoBehaviour
 
         //Changes because of imperative stimulus
         if (LightTimer <= 0) {
+            GoNoGoState = GoNoGoList[CurrentTrial];
             shownImperative = true;
         }
 
