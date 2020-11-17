@@ -17,6 +17,7 @@ public class Manager : MonoBehaviour
     public float LightTimer = 0f;
     public bool isDark;
     public bool shownImperative;
+    public bool circleTouched = false;
 
     [Header("Managing trials")]
     public int TotalNumberTrials = 240;
@@ -54,7 +55,7 @@ public class Manager : MonoBehaviour
         }
 
         //Generating pseudo-randomized GoNoGo list
-        for (int i = 0; i < (TotalNumberTrials / 3); i++)
+        for (int i = 0; i < (TotalNumberTrials/2); i++)
         {
             GoNoGoList.Add("Go");
             GoNoGoList.Add("NoGo");
