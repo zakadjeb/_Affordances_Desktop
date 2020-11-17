@@ -8,8 +8,8 @@ public class SlidingDoorCollision : MonoBehaviour
     public GameObject Door;
     private Manager m;
     public Vector3 zeroPosition;
-    private Color originalColor;
-    private float time = 0f;
+    public Color originalColor;
+    public float time = 0f;
     public Color NoGoColor;
     public Color GoColor;
     public bool doneChange;
@@ -27,19 +27,23 @@ public class SlidingDoorCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        if (m.shownImperative && !doneChange){
+        if (m.shownImperative && !m.isDark){
             ColourChanging(m.GoNoGoState);
         }
 
-        if (doneChange) {
+        if (m.isDark) {
+            Door.GetComponent<Renderer>().material.color = originalColor;
+            Door.transform.position = zeroPosition;
             time = 0;
-            doneChange = false;
         }
     }
 
     private void OnTriggerEnter(Collider other) {
         if (m.shownImperative){
             StartCoroutine(SlideDoor());
+            if (m.GoNoGoState == "Go" && m.CurrentDoorType == "Narrow") {
+                m.circleTouched = true;
+            }
         }
     }
 

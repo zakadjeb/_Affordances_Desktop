@@ -7,8 +7,8 @@ public class MovingAround : MonoBehaviour
 
     private float MovementX;
     private float MovementY;
-    public float MovingSpeed = .8f;
-    public float MouseSpeed = 2.0f;
+    [SerializeField] [Range(0f, 10f)] public float MovingSpeed;
+    [SerializeField] [Range(0f, 10f)] public float MouseSpeed;
     public float PlayerHeight = 1.8f;
 
     private float MouseX = 0.0f;

@@ -22,15 +22,16 @@ public class Manager : MonoBehaviour
     [Header("Managing trials")]
     public int TotalNumberTrials = 240;
     public int CurrentTrial = 0;
-    public bool trialDone = false;
+    //public bool trialDone = false;
     public string CurrentDoorType;
     public string GoNoGoState;
     public List<string> GoNoGoList;
     public List<int> DoorCaseList;
+    private bool runOnceLight;
 
-    // [Header("Setting GameObjects")]
-    // public GameObject SlidingDoor;
-    // public GameObject SlidingDoor;
+    [Header("Questionnaire")]
+    public GameObject gameobjectSAM;
+    private SAM SAMcode;
 
 
     [Header("Game settings")]
@@ -83,6 +84,9 @@ public class Manager : MonoBehaviour
         DarkTimer = TimeInDarkList[CurrentTrial];
         LightTimer = TimeToImperativeList[CurrentTrial];
         GoNoGoState = "";
+
+        //Retrieving the SAM questionnaire
+        SAMcode = gameobjectSAM.GetComponent<SAM>();
     }
 
     // Update is called once per frame
@@ -98,8 +102,9 @@ public class Manager : MonoBehaviour
         CurrentStatus = "#" + CurrentTrial.ToString() + ";" + CurrentDoorType + ";" + LightStatus + ";" + GoNoGoState;
 
         //Countdown for dark
-        if (DarkTimer >= 0 && isDark && !trialDone) {
+        if (DarkTimer >= 0 && isDark) {
             DarkTimer -= Time.deltaTime;
+            Sphere.SetActive(true);
         }
 
         //Changes because it's now Light
@@ -109,23 +114,29 @@ public class Manager : MonoBehaviour
         }
 
         //Countdown for imperative
-        if (LightTimer >= 0 && !isDark && !trialDone) {
+        if (LightTimer >= 0 && !isDark) {
             LightTimer -= Time.deltaTime;
         }
 
         //Changes because of imperative stimulus
-        if (LightTimer <= 0) {
+        if (LightTimer <= 0 && !runOnceLight) {
             GoNoGoState = GoNoGoList[CurrentTrial];
+            if (GoNoGoState == "NoGo") {
+                circleTouched = true;
+            }
+            runOnceLight = true;
             shownImperative = true;
         }
 
         //Once the trial is done
-        if (trialDone && LightTimer <= 0 && DarkTimer <= 0){
+        if (Input.GetKeyDown(KeyCode.Space) && circleTouched && SAMcode.allAnswered){
             CurrentTrial += 1;
             DarkTimer = TimeInDarkList[CurrentTrial];
             LightTimer = TimeToImperativeList[CurrentTrial];
+            runOnceLight = false;
+            shownImperative = false;
             isDark = true;
-            trialDone =  false;
+            circleTouched = false;
         }
     }
 

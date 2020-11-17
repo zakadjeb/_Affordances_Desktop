@@ -9,6 +9,7 @@ public class SAM : MonoBehaviour
     public GameObject startSquare;
     private StartSquare insideSquareScript;
     public bool insideSquare;
+    public bool allAnswered = false;
     private bool canAnswer;
     public Color selectedColor;
     public GameObject selectionSquareArousal;
@@ -78,6 +79,16 @@ public class SAM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (m.isDark) {
+            allAnswered = false;
+            answeredArousal = false;
+            answeredValence = false;
+            answeredDominance = false;
+            selectionSquareArousal.SetActive(false);
+            selectionSquareValence.SetActive(false);
+            selectionSquareDominance.SetActive(false);
+        }
+
         if (insideSquareScript.insideSquare && !m.isDark && m.circleTouched) {
             canAnswer = true;
         }
@@ -88,14 +99,14 @@ public class SAM : MonoBehaviour
         //The first questionnaire--Arousal
         if (canAnswer && !answeredArousal && !answeredValence && !answeredDominance) {
             //Setting Arousal on first
-            StartCoroutine(ActivatingQuestionnaire(Arousal));
+            Arousal.SetActive(true);
 
             if (Input.GetKeyDown("1")){
                 selectionSquareArousal.SetActive(true);
                 if (Input.GetKeyDown("1") && selectionSquareArousal.transform.position == A0.transform.position){
                     StartCoroutine(Selected(A0));
                     StartCoroutine(Selected(selectionSquareArousal));
-                    answeredArousal = true;
+                    StartCoroutine(RemoveQuestionnaire(Arousal));
                 }
                 selectionSquareArousal.transform.position = A0.transform.position;
             }
@@ -104,7 +115,7 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("2") && selectionSquareArousal.transform.position == A1.transform.position){
                     StartCoroutine(Selected(A1));
                     StartCoroutine(Selected(selectionSquareArousal));
-                    answeredArousal = true;
+                    StartCoroutine(RemoveQuestionnaire(Arousal));
                 }
                 selectionSquareArousal.transform.position = A1.transform.position;
             }
@@ -113,7 +124,7 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("3") && selectionSquareArousal.transform.position == A2.transform.position){
                     StartCoroutine(Selected(A2));
                     StartCoroutine(Selected(selectionSquareArousal));
-                    answeredArousal = true;
+                    StartCoroutine(RemoveQuestionnaire(Arousal));
                 }
                 selectionSquareArousal.transform.position = A2.transform.position;
             }
@@ -122,7 +133,7 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("4") && selectionSquareArousal.transform.position == A3.transform.position){
                     StartCoroutine(Selected(A3));
                     StartCoroutine(Selected(selectionSquareArousal));
-                    answeredArousal = true;
+                    StartCoroutine(RemoveQuestionnaire(Arousal));
                 }
                 selectionSquareArousal.transform.position = A3.transform.position;
             }
@@ -131,7 +142,7 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("5") && selectionSquareArousal.transform.position == A4.transform.position){
                     StartCoroutine(Selected(A4));
                     StartCoroutine(Selected(selectionSquareArousal));
-                    answeredArousal = true;
+                    StartCoroutine(RemoveQuestionnaire(Arousal));
                 }
                 selectionSquareArousal.transform.position = A4.transform.position;
             }
@@ -140,14 +151,14 @@ public class SAM : MonoBehaviour
         //The second questionnaire--Valence
         if (canAnswer && answeredArousal && !answeredValence && !answeredDominance) {
             //Setting Valence on first
-            StartCoroutine(ActivatingQuestionnaire(Valence));
+            Valence.SetActive(true);
 
             if (Input.GetKeyDown("1")){
                 selectionSquareValence.SetActive(true);
                 if (Input.GetKeyDown("1") && selectionSquareValence.transform.position == V0.transform.position){
                     StartCoroutine(Selected(V0));
                     StartCoroutine(Selected(selectionSquareValence));
-                    answeredValence = true;
+                    StartCoroutine(RemoveQuestionnaire(Valence));
                 }
                 selectionSquareValence.transform.position = V0.transform.position;
             }
@@ -156,7 +167,7 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("2") && selectionSquareValence.transform.position == V1.transform.position){
                     StartCoroutine(Selected(V1));
                     StartCoroutine(Selected(selectionSquareValence));
-                    answeredValence = true;
+                    StartCoroutine(RemoveQuestionnaire(Valence));
                 }
                 selectionSquareValence.transform.position = V1.transform.position;
             }
@@ -165,7 +176,7 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("3") && selectionSquareValence.transform.position == V2.transform.position){
                     StartCoroutine(Selected(V2));
                     StartCoroutine(Selected(selectionSquareValence));
-                    answeredValence = true;
+                    StartCoroutine(RemoveQuestionnaire(Valence));
                 }
                 selectionSquareValence.transform.position = V2.transform.position;
             }
@@ -174,7 +185,7 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("4") && selectionSquareValence.transform.position == V3.transform.position){
                     StartCoroutine(Selected(V3));
                     StartCoroutine(Selected(selectionSquareValence));
-                    answeredValence = true;
+                    StartCoroutine(RemoveQuestionnaire(Valence));
                 }
                 selectionSquareValence.transform.position = V3.transform.position;
             }
@@ -183,7 +194,7 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("5") && selectionSquareValence.transform.position == V4.transform.position){
                     StartCoroutine(Selected(V4));
                     StartCoroutine(Selected(selectionSquareValence));
-                    answeredValence = true;
+                    StartCoroutine(RemoveQuestionnaire(Valence));
                 }
                 selectionSquareValence.transform.position = V4.transform.position;
             }
@@ -192,14 +203,14 @@ public class SAM : MonoBehaviour
         //The third questionnaire--Dominance
         if (canAnswer && answeredArousal && answeredValence && !answeredDominance) {
             //Setting Dominance on 
-            StartCoroutine(ActivatingQuestionnaire(Dominance));
+            Dominance.SetActive(true);
 
             if (Input.GetKeyDown("1")){
                 selectionSquareDominance.SetActive(true);
                 if (Input.GetKeyDown("1") && selectionSquareDominance.transform.position == D0.transform.position){
                     StartCoroutine(Selected(D0));
                     StartCoroutine(Selected(selectionSquareDominance));
-                    answeredDominance = true;
+                    StartCoroutine(RemoveQuestionnaire(Dominance));
                 }
                 selectionSquareDominance.transform.position = D0.transform.position;
             }
@@ -208,7 +219,7 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("2") && selectionSquareDominance.transform.position == D1.transform.position){
                     StartCoroutine(Selected(D1));
                     StartCoroutine(Selected(selectionSquareDominance));
-                    answeredDominance = true;
+                    StartCoroutine(RemoveQuestionnaire(Dominance));
                 }
                 selectionSquareDominance.transform.position = D1.transform.position;
             }
@@ -217,7 +228,7 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("3") && selectionSquareDominance.transform.position == D2.transform.position){
                     StartCoroutine(Selected(D2));
                     StartCoroutine(Selected(selectionSquareDominance));
-                    answeredDominance = true;
+                    StartCoroutine(RemoveQuestionnaire(Dominance));
                 }
                 selectionSquareDominance.transform.position = D2.transform.position;
             }
@@ -226,7 +237,7 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("4") && selectionSquareDominance.transform.position == D3.transform.position){
                     StartCoroutine(Selected(D3));
                     StartCoroutine(Selected(selectionSquareDominance));
-                    answeredDominance = true;
+                    StartCoroutine(RemoveQuestionnaire(Dominance));
                 }
                 selectionSquareDominance.transform.position = D3.transform.position;
             }
@@ -235,30 +246,36 @@ public class SAM : MonoBehaviour
                 if (Input.GetKeyDown("5") && selectionSquareDominance.transform.position == D4.transform.position){
                     StartCoroutine(Selected(D4));
                     StartCoroutine(Selected(selectionSquareDominance));
-                    answeredDominance = true;
+                    StartCoroutine(RemoveQuestionnaire(Dominance));
                 }
                 selectionSquareDominance.transform.position = D4.transform.position;
             }
         }
 
-        //Removing the Arousal questionnair
-        if (answeredArousal) {
-            StartCoroutine(RemoveQuestionnaire(Arousal));
-        }
-        //Removing the Valence questionnair
-        if (answeredValence) {
-            StartCoroutine(RemoveQuestionnaire(Valence));
-        }
-        //Removing the Arousal questionnair
-        if (answeredDominance) {
-            StartCoroutine(RemoveQuestionnaire(Dominance));
-        }
+        // //Removing the Arousal questionnair
+        // if (answeredArousal) {
+        //     StartCoroutine(RemoveQuestionnaire(Arousal));
+        // }
+        // //Removing the Valence questionnair
+        // if (answeredValence) {
+        //     StartCoroutine(RemoveQuestionnaire(Valence));
+        // }
+        // //Removing the Arousal questionnair
+        // if (answeredDominance) {
+        //     StartCoroutine(RemoveQuestionnaire(Dominance));
+        // }
 
         //Resetting the color of the selection square for next trial
         if (!canAnswer || (answeredArousal && answeredDominance && answeredValence)){
             StartCoroutine(ResettingColor(selectionSquareArousal, A0, A1, A2, A3, A4));
             StartCoroutine(ResettingColor(selectionSquareValence, V0, V1, V2, V3, V4));
             StartCoroutine(ResettingColor(selectionSquareDominance, D0, D1, D2, D3, D4));
+        }
+
+        if (answeredArousal && answeredDominance && answeredValence) {
+            allAnswered = true;
+        } else {
+            allAnswered = false;
         }
 
         //Fading the color of the square
@@ -282,15 +299,13 @@ public class SAM : MonoBehaviour
             yield return null;
         }
 
-        //Turning questionnaire on
-        IEnumerator ActivatingQuestionnaire(GameObject q) {
-            yield return new WaitForSeconds(1.5f);
-            q.SetActive(true);
-        }
-
         //Removing a questionnaire
         IEnumerator RemoveQuestionnaire(GameObject q) {
-            yield return new WaitForSeconds(1f);
+            Debug.Log(q.name);
+            yield return new WaitForSeconds(2f);
+            if (q.name == "SAM_Arousal") {answeredArousal = true;}
+            if (q.name == "SAM_Valence") {answeredValence = true;}
+            if (q.name == "SAM_Dominance") {answeredDominance = true;}
             q.SetActive(false);
         }
     }

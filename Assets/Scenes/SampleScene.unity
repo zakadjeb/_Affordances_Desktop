@@ -446,6 +446,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotateSpeed: 130
   MoveUpSpeed: 0.3
+  CircleHeight: 1.5
+  movedUp: 0
+  newPosTemp: []
+  newPos: []
   Manager: {fileID: 1181057105}
 --- !u!65 &151034674
 BoxCollider:
@@ -595,6 +599,8 @@ MonoBehaviour:
   Manager: {fileID: 1181057105}
   Door: {fileID: 969942319}
   zeroPosition: {x: 0, y: 0, z: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  time: 0
   NoGoColor: {r: 0.8679245, g: 0, b: 0, a: 0}
   GoColor: {r: 0.14417028, g: 0.8018868, b: 0, a: 0}
   doneChange: 0
@@ -1815,7 +1821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovingSpeed: 2
-  MouseSpeed: 0.8
+  MouseSpeed: 6.78
   PlayerHeight: 1.8
 --- !u!54 &963194230
 Rigidbody:
@@ -2014,7 +2020,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 624c36c7e6e9d7d41a86da3bc75eff7b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.743
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 624c36c7e6e9d7d41a86da3bc75eff7b,
         type: 3}
@@ -2024,7 +2030,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 624c36c7e6e9d7d41a86da3bc75eff7b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.249
+      value: -4.03
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 624c36c7e6e9d7d41a86da3bc75eff7b,
         type: 3}
@@ -2130,11 +2136,11 @@ MonoBehaviour:
   circleTouched: 0
   TotalNumberTrials: 240
   CurrentTrial: 0
-  trialDone: 0
   CurrentDoorType: 
   GoNoGoState: 
   GoNoGoList: []
   DoorCaseList: 
+  gameobjectSAM: {fileID: 1534428675}
   TimeInDark: 3
   DarkSD: 2
   TimeInDarkList: 
@@ -2627,6 +2633,7 @@ MonoBehaviour:
   Manager: {fileID: 1181057105}
   startSquare: {fileID: 1092233554}
   insideSquare: 0
+  allAnswered: 0
   selectedColor: {r: 0.03529412, g: 1, b: 0.2627451, a: 1}
   selectionSquareArousal: {fileID: 1353396135}
   selectionSquareValence: {fileID: 318014275}
