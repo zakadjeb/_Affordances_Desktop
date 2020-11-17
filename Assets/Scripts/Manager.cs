@@ -124,8 +124,8 @@ public class Manager : MonoBehaviour
             if (GoNoGoState == "NoGo") {
                 circleTouched = true;
             }
-            runOnceLight = true;
             shownImperative = true;
+            runOnceLight = true;
         }
 
         //Once the trial is done

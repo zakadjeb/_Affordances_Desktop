@@ -104,6 +104,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("1")){
                 selectionSquareArousal.SetActive(true);
                 if (Input.GetKeyDown("1") && selectionSquareArousal.transform.position == A0.transform.position){
+                    Debug.Log(m.CurrentStatus + ";Arousal1");
                     StartCoroutine(Selected(A0));
                     StartCoroutine(Selected(selectionSquareArousal));
                     StartCoroutine(RemoveQuestionnaire(Arousal));
@@ -113,6 +114,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("2")){
                 selectionSquareArousal.SetActive(true);
                 if (Input.GetKeyDown("2") && selectionSquareArousal.transform.position == A1.transform.position){
+                    Debug.Log(m.CurrentStatus + ";Arousal2");
                     StartCoroutine(Selected(A1));
                     StartCoroutine(Selected(selectionSquareArousal));
                     StartCoroutine(RemoveQuestionnaire(Arousal));
@@ -122,6 +124,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("3")){
                 selectionSquareArousal.SetActive(true);
                 if (Input.GetKeyDown("3") && selectionSquareArousal.transform.position == A2.transform.position){
+                    Debug.Log(m.CurrentStatus + ";Arousal3");
                     StartCoroutine(Selected(A2));
                     StartCoroutine(Selected(selectionSquareArousal));
                     StartCoroutine(RemoveQuestionnaire(Arousal));
@@ -131,6 +134,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("4")){
                 selectionSquareArousal.SetActive(true);
                 if (Input.GetKeyDown("4") && selectionSquareArousal.transform.position == A3.transform.position){
+                    Debug.Log(m.CurrentStatus + ";Arousal4");
                     StartCoroutine(Selected(A3));
                     StartCoroutine(Selected(selectionSquareArousal));
                     StartCoroutine(RemoveQuestionnaire(Arousal));
@@ -140,6 +144,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("5")){
                 selectionSquareArousal.SetActive(true);
                 if (Input.GetKeyDown("5") && selectionSquareArousal.transform.position == A4.transform.position){
+                    Debug.Log(m.CurrentStatus + ";Arousal4");
                     StartCoroutine(Selected(A4));
                     StartCoroutine(Selected(selectionSquareArousal));
                     StartCoroutine(RemoveQuestionnaire(Arousal));
@@ -156,6 +161,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("1")){
                 selectionSquareValence.SetActive(true);
                 if (Input.GetKeyDown("1") && selectionSquareValence.transform.position == V0.transform.position){
+                    Debug.Log(m.CurrentStatus + ";Valence1");
                     StartCoroutine(Selected(V0));
                     StartCoroutine(Selected(selectionSquareValence));
                     StartCoroutine(RemoveQuestionnaire(Valence));
@@ -165,6 +171,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("2")){
                 selectionSquareValence.SetActive(true);
                 if (Input.GetKeyDown("2") && selectionSquareValence.transform.position == V1.transform.position){
+                    Debug.Log(m.CurrentStatus + ";Valence2");
                     StartCoroutine(Selected(V1));
                     StartCoroutine(Selected(selectionSquareValence));
                     StartCoroutine(RemoveQuestionnaire(Valence));
@@ -174,6 +181,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("3")){
                 selectionSquareValence.SetActive(true);
                 if (Input.GetKeyDown("3") && selectionSquareValence.transform.position == V2.transform.position){
+                    Debug.Log(m.CurrentStatus + ";Valence3");
                     StartCoroutine(Selected(V2));
                     StartCoroutine(Selected(selectionSquareValence));
                     StartCoroutine(RemoveQuestionnaire(Valence));
@@ -183,6 +191,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("4")){
                 selectionSquareValence.SetActive(true);
                 if (Input.GetKeyDown("4") && selectionSquareValence.transform.position == V3.transform.position){
+                    Debug.Log(m.CurrentStatus + ";Valence4");
                     StartCoroutine(Selected(V3));
                     StartCoroutine(Selected(selectionSquareValence));
                     StartCoroutine(RemoveQuestionnaire(Valence));
@@ -192,6 +201,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("5")){
                 selectionSquareValence.SetActive(true);
                 if (Input.GetKeyDown("5") && selectionSquareValence.transform.position == V4.transform.position){
+                    Debug.Log(m.CurrentStatus + ";Valence5");
                     StartCoroutine(Selected(V4));
                     StartCoroutine(Selected(selectionSquareValence));
                     StartCoroutine(RemoveQuestionnaire(Valence));
@@ -208,6 +218,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("1")){
                 selectionSquareDominance.SetActive(true);
                 if (Input.GetKeyDown("1") && selectionSquareDominance.transform.position == D0.transform.position){
+                    Debug.Log(m.CurrentStatus + ";Dominance1");
                     StartCoroutine(Selected(D0));
                     StartCoroutine(Selected(selectionSquareDominance));
                     StartCoroutine(RemoveQuestionnaire(Dominance));
@@ -217,6 +228,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("2")){
                 selectionSquareDominance.SetActive(true);
                 if (Input.GetKeyDown("2") && selectionSquareDominance.transform.position == D1.transform.position){
+                    Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance2");
                     StartCoroutine(Selected(D1));
                     StartCoroutine(Selected(selectionSquareDominance));
                     StartCoroutine(RemoveQuestionnaire(Dominance));
@@ -226,6 +238,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("3")){
                 selectionSquareDominance.SetActive(true);
                 if (Input.GetKeyDown("3") && selectionSquareDominance.transform.position == D2.transform.position){
+                    Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance3");
                     StartCoroutine(Selected(D2));
                     StartCoroutine(Selected(selectionSquareDominance));
                     StartCoroutine(RemoveQuestionnaire(Dominance));
@@ -235,6 +248,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("4")){
                 selectionSquareDominance.SetActive(true);
                 if (Input.GetKeyDown("4") && selectionSquareDominance.transform.position == D3.transform.position){
+                    Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance4");
                     StartCoroutine(Selected(D3));
                     StartCoroutine(Selected(selectionSquareDominance));
                     StartCoroutine(RemoveQuestionnaire(Dominance));
@@ -244,6 +258,7 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("5")){
                 selectionSquareDominance.SetActive(true);
                 if (Input.GetKeyDown("5") && selectionSquareDominance.transform.position == D4.transform.position){
+                    Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance5");
                     StartCoroutine(Selected(D4));
                     StartCoroutine(Selected(selectionSquareDominance));
                     StartCoroutine(RemoveQuestionnaire(Dominance));
@@ -251,19 +266,6 @@ public class SAM : MonoBehaviour
                 selectionSquareDominance.transform.position = D4.transform.position;
             }
         }
-
-        // //Removing the Arousal questionnair
-        // if (answeredArousal) {
-        //     StartCoroutine(RemoveQuestionnaire(Arousal));
-        // }
-        // //Removing the Valence questionnair
-        // if (answeredValence) {
-        //     StartCoroutine(RemoveQuestionnaire(Valence));
-        // }
-        // //Removing the Arousal questionnair
-        // if (answeredDominance) {
-        //     StartCoroutine(RemoveQuestionnaire(Dominance));
-        // }
 
         //Resetting the color of the selection square for next trial
         if (!canAnswer || (answeredArousal && answeredDominance && answeredValence)){
@@ -280,7 +282,7 @@ public class SAM : MonoBehaviour
 
         //Fading the color of the square
         IEnumerator Selected(GameObject SAM){
-            for (float f = 1f; f > -0.1; f -= 0.05f) 
+            for (float f = 1f;f > -0.1;f -= 0.05f) 
               {
                   selectedColor.a = f;
                   SAM.GetComponent<SpriteRenderer>().color = selectedColor;
@@ -301,7 +303,6 @@ public class SAM : MonoBehaviour
 
         //Removing a questionnaire
         IEnumerator RemoveQuestionnaire(GameObject q) {
-            Debug.Log(q.name);
             yield return new WaitForSeconds(2f);
             if (q.name == "SAM_Arousal") {answeredArousal = true;}
             if (q.name == "SAM_Valence") {answeredValence = true;}
