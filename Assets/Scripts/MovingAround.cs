@@ -20,7 +20,7 @@ public class MovingAround : MonoBehaviour
     {
         transform.position = new Vector3(-2.5f,PlayerHeight,0f);
         Turning = 180f;
-        MovingSpeed = 70f;
+        TurningSpeed = 70f;
     }
 
     // Update is called once per frame
