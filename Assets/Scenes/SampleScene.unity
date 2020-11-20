@@ -2003,7 +2003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovingSpeed: 2
-  MouseSpeed: 6.78
+  TurningSpeed: 70
   PlayerHeight: 1.8
 --- !u!54 &963194230
 Rigidbody:
