@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Assets.LSL4Unity.Scripts;
 using System.IO;
 using UnityEngine.XR;
 using System;
@@ -32,6 +33,8 @@ public class Manager : MonoBehaviour
     [Header("Questionnaire")]
     public GameObject gameobjectSAM;
     private SAM SAMcode;
+    [Header ("LSL settings")]
+    public LSLMarkerStream marker;
 
 
     [Header("Game settings")]
@@ -46,6 +49,9 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Getting LSL stream
+        marker = FindObjectOfType<LSLMarkerStream>();
+
         //Generating pseudo-randomized trial list
         for (int i = 0; i < (TotalNumberTrials / 3); i++)
         {
