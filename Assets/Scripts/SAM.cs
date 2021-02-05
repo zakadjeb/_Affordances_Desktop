@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.LSL4Unity.Scripts;
 
 public class SAM : MonoBehaviour
 {
+    public GameObject marker;
+    public LSLMarkerStream sM;
     public GameObject Manager;
     private Manager m;
     public GameObject startSquare;
@@ -43,6 +46,7 @@ public class SAM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sM = marker.GetComponent<LSLMarkerStream>();
         m = Manager.GetComponent<Manager>();
         insideSquareScript = startSquare.GetComponent<StartSquare>();
         selectionSquareArousal.SetActive(false);
@@ -104,7 +108,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("1")){
                 selectionSquareArousal.SetActive(true);
                 if (Input.GetKeyDown("1") && selectionSquareArousal.transform.position == A0.transform.position){
-                    Debug.Log(m.CurrentStatus + ";Arousal1");
+                    //Debug.Log(m.CurrentStatus + ";Arousal1");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Arousal1");
                     StartCoroutine(Selected(A0));
                     StartCoroutine(Selected(selectionSquareArousal));
                     StartCoroutine(RemoveQuestionnaire(Arousal));
@@ -114,7 +120,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("2")){
                 selectionSquareArousal.SetActive(true);
                 if (Input.GetKeyDown("2") && selectionSquareArousal.transform.position == A1.transform.position){
-                    Debug.Log(m.CurrentStatus + ";Arousal2");
+                    //Debug.Log(m.CurrentStatus + ";Arousal2");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Arousal2");
                     StartCoroutine(Selected(A1));
                     StartCoroutine(Selected(selectionSquareArousal));
                     StartCoroutine(RemoveQuestionnaire(Arousal));
@@ -124,7 +132,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("3")){
                 selectionSquareArousal.SetActive(true);
                 if (Input.GetKeyDown("3") && selectionSquareArousal.transform.position == A2.transform.position){
-                    Debug.Log(m.CurrentStatus + ";Arousal3");
+                    //Debug.Log(m.CurrentStatus + ";Arousal3");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Arousal3");
                     StartCoroutine(Selected(A2));
                     StartCoroutine(Selected(selectionSquareArousal));
                     StartCoroutine(RemoveQuestionnaire(Arousal));
@@ -134,7 +144,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("4")){
                 selectionSquareArousal.SetActive(true);
                 if (Input.GetKeyDown("4") && selectionSquareArousal.transform.position == A3.transform.position){
-                    Debug.Log(m.CurrentStatus + ";Arousal4");
+                    //Debug.Log(m.CurrentStatus + ";Arousal4");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Arousal4");
                     StartCoroutine(Selected(A3));
                     StartCoroutine(Selected(selectionSquareArousal));
                     StartCoroutine(RemoveQuestionnaire(Arousal));
@@ -144,7 +156,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("5")){
                 selectionSquareArousal.SetActive(true);
                 if (Input.GetKeyDown("5") && selectionSquareArousal.transform.position == A4.transform.position){
-                    Debug.Log(m.CurrentStatus + ";Arousal4");
+                    //Debug.Log(m.CurrentStatus + ";Arousal5");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Arousal5");
                     StartCoroutine(Selected(A4));
                     StartCoroutine(Selected(selectionSquareArousal));
                     StartCoroutine(RemoveQuestionnaire(Arousal));
@@ -161,7 +175,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("1")){
                 selectionSquareValence.SetActive(true);
                 if (Input.GetKeyDown("1") && selectionSquareValence.transform.position == V0.transform.position){
-                    Debug.Log(m.CurrentStatus + ";Valence1");
+                    //Debug.Log(m.CurrentStatus + ";Valence1");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Valence1");
                     StartCoroutine(Selected(V0));
                     StartCoroutine(Selected(selectionSquareValence));
                     StartCoroutine(RemoveQuestionnaire(Valence));
@@ -171,7 +187,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("2")){
                 selectionSquareValence.SetActive(true);
                 if (Input.GetKeyDown("2") && selectionSquareValence.transform.position == V1.transform.position){
-                    Debug.Log(m.CurrentStatus + ";Valence2");
+                    //Debug.Log(m.CurrentStatus + ";Valence2");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Valence2");
                     StartCoroutine(Selected(V1));
                     StartCoroutine(Selected(selectionSquareValence));
                     StartCoroutine(RemoveQuestionnaire(Valence));
@@ -181,7 +199,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("3")){
                 selectionSquareValence.SetActive(true);
                 if (Input.GetKeyDown("3") && selectionSquareValence.transform.position == V2.transform.position){
-                    Debug.Log(m.CurrentStatus + ";Valence3");
+                    //Debug.Log(m.CurrentStatus + ";Valence3");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Valence3");
                     StartCoroutine(Selected(V2));
                     StartCoroutine(Selected(selectionSquareValence));
                     StartCoroutine(RemoveQuestionnaire(Valence));
@@ -191,7 +211,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("4")){
                 selectionSquareValence.SetActive(true);
                 if (Input.GetKeyDown("4") && selectionSquareValence.transform.position == V3.transform.position){
-                    Debug.Log(m.CurrentStatus + ";Valence4");
+                    //Debug.Log(m.CurrentStatus + ";Valence4");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Valence4");
                     StartCoroutine(Selected(V3));
                     StartCoroutine(Selected(selectionSquareValence));
                     StartCoroutine(RemoveQuestionnaire(Valence));
@@ -201,7 +223,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("5")){
                 selectionSquareValence.SetActive(true);
                 if (Input.GetKeyDown("5") && selectionSquareValence.transform.position == V4.transform.position){
-                    Debug.Log(m.CurrentStatus + ";Valence5");
+                    //Debug.Log(m.CurrentStatus + ";Valence5");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Valence5");
                     StartCoroutine(Selected(V4));
                     StartCoroutine(Selected(selectionSquareValence));
                     StartCoroutine(RemoveQuestionnaire(Valence));
@@ -218,7 +242,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("1")){
                 selectionSquareDominance.SetActive(true);
                 if (Input.GetKeyDown("1") && selectionSquareDominance.transform.position == D0.transform.position){
-                    Debug.Log(m.CurrentStatus + ";Dominance1");
+                    //Debug.Log(m.CurrentStatus + ";Dominance1");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Dominance1");
                     StartCoroutine(Selected(D0));
                     StartCoroutine(Selected(selectionSquareDominance));
                     StartCoroutine(RemoveQuestionnaire(Dominance));
@@ -228,7 +254,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("2")){
                 selectionSquareDominance.SetActive(true);
                 if (Input.GetKeyDown("2") && selectionSquareDominance.transform.position == D1.transform.position){
-                    Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance2");
+                    //Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance2");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Dominance2");
                     StartCoroutine(Selected(D1));
                     StartCoroutine(Selected(selectionSquareDominance));
                     StartCoroutine(RemoveQuestionnaire(Dominance));
@@ -238,7 +266,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("3")){
                 selectionSquareDominance.SetActive(true);
                 if (Input.GetKeyDown("3") && selectionSquareDominance.transform.position == D2.transform.position){
-                    Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance3");
+                    //Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance3");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Dominance3");
                     StartCoroutine(Selected(D2));
                     StartCoroutine(Selected(selectionSquareDominance));
                     StartCoroutine(RemoveQuestionnaire(Dominance));
@@ -248,7 +278,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("4")){
                 selectionSquareDominance.SetActive(true);
                 if (Input.GetKeyDown("4") && selectionSquareDominance.transform.position == D3.transform.position){
-                    Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance4");
+                    //Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance4");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Dominance4");
                     StartCoroutine(Selected(D3));
                     StartCoroutine(Selected(selectionSquareDominance));
                     StartCoroutine(RemoveQuestionnaire(Dominance));
@@ -258,7 +290,9 @@ public class SAM : MonoBehaviour
             if (Input.GetKeyDown("5")){
                 selectionSquareDominance.SetActive(true);
                 if (Input.GetKeyDown("5") && selectionSquareDominance.transform.position == D4.transform.position){
-                    Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance5");
+                    //Debug.Log("#" + m.CurrentTrial.ToString() + "Dominance5");
+                    m.eventMarkerRun = false;
+                    sendMarker(";Dominance5");
                     StartCoroutine(Selected(D4));
                     StartCoroutine(Selected(selectionSquareDominance));
                     StartCoroutine(RemoveQuestionnaire(Dominance));
@@ -282,11 +316,11 @@ public class SAM : MonoBehaviour
 
         //Fading the color of the square
         IEnumerator Selected(GameObject SAM){
-            for (float f = 1f;f > -0.1;f -= 0.05f) 
+            for (float f = 1f;f > -0.05;f -= 0.01f) 
               {
                   selectedColor.a = f;
                   SAM.GetComponent<SpriteRenderer>().color = selectedColor;
-                  yield return new WaitForSeconds(0.05f);
+                  yield return new WaitForSeconds(0.01f);
               }
         }
 
@@ -303,11 +337,21 @@ public class SAM : MonoBehaviour
 
         //Removing a questionnaire
         IEnumerator RemoveQuestionnaire(GameObject q) {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             if (q.name == "SAM_Arousal") {answeredArousal = true;}
             if (q.name == "SAM_Valence") {answeredValence = true;}
             if (q.name == "SAM_Dominance") {answeredDominance = true;}
             q.SetActive(false);
         }
+
+        void sendMarker(string SAM)
+    {
+    if (!m.eventMarkerRun)
+        {
+            print(m.CurrentStatus + SAM);
+            sM.Write(m.CurrentStatus + SAM);
+            m.eventMarkerRun = true;
+        }
+    }
     }
 }

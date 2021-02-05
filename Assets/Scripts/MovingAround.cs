@@ -9,7 +9,7 @@ public class MovingAround : MonoBehaviour
     private float MovementY;
     private float Turning;
     [SerializeField] [Range(0f, 10f)] public float MovingSpeed;
-    [SerializeField] [Range(0f, 100f)] public float TurningSpeed;
+    [SerializeField] [Range(0f, 120f)] public float TurningSpeed;
     public float PlayerHeight = 1.8f;
 
     // private float MouseX = 0.0f;
@@ -20,7 +20,7 @@ public class MovingAround : MonoBehaviour
     {
         transform.position = new Vector3(-2.5f,PlayerHeight,0f);
         Turning = 180f;
-        TurningSpeed = 70f;
+        TurningSpeed = 100f;
     }
 
     // Update is called once per frame

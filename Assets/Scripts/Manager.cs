@@ -35,6 +35,10 @@ public class Manager : MonoBehaviour
     private SAM SAMcode;
     [Header ("LSL settings")]
     public LSLMarkerStream marker;
+    public bool eventMarkerRun = false;
+    public bool LightsOnRun = false;
+    public bool LightsOffRun = false;
+    public bool GoCueRun = false;
 
 
     [Header("Game settings")]
@@ -105,7 +109,41 @@ public class Manager : MonoBehaviour
         if (DoorCaseList[CurrentTrial] == 3) {CurrentDoorType = "Wide";}
         if (isDark == false) {LightStatus = "LightsOn";}
         if (isDark == true) {LightStatus = "Dark";}
+        if (isDark == true) {GoNoGoState = "";}
         CurrentStatus = "#" + CurrentTrial.ToString() + ";" + CurrentDoorType + ";" + LightStatus + ";" + GoNoGoState;
+
+
+
+        //Sending the LSL-markers when:
+
+        // Lights on:
+        if (DarkTimer <= 0 && !isDark) {
+                if (!LightsOnRun) {
+                eventMarkerRun = false;
+                sendMarker();
+                LightsOnRun = true;
+            }
+        }
+        // Lights off:
+        if (DarkTimer >= 0 && isDark) {
+                if (!LightsOffRun) {
+                eventMarkerRun = false;
+                sendMarker();
+                LightsOffRun = true;
+            }
+        }
+        // Go/NoGo cue:
+        if (shownImperative) {
+                if (!GoCueRun) {
+                eventMarkerRun = false;
+                sendMarker();
+                GoCueRun = true;
+            }
+        }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //The Paradigm:
 
         //Countdown for dark
         if (DarkTimer >= 0 && isDark) {
@@ -143,7 +181,21 @@ public class Manager : MonoBehaviour
             shownImperative = false;
             isDark = true;
             circleTouched = false;
+            LightsOnRun = false;
+            LightsOffRun = false;
+            GoCueRun = false;
         }
     }
 
+//Sending marker
+     void sendMarker()
+    {
+        if (!eventMarkerRun)
+        {
+            print(CurrentStatus);
+            marker.Write(CurrentStatus);
+            eventMarkerRun = true;
+        }
+        //eventMarkerRun = true;
+    }
 }
