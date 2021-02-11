@@ -7,7 +7,7 @@ using Assets.LSL4Unity.Scripts.Common;
 public class lsl_rb_stream : MonoBehaviour {
 
 	// 6DOF streaming
-    GameObject head;
+    GameObject player_camera;
 
 	private liblsl.StreamOutlet outlet;
 	private liblsl.StreamInfo streamInfo;
@@ -44,7 +44,7 @@ public class lsl_rb_stream : MonoBehaviour {
 	}
 
 	// set LSL parameters
-	public const string StreamName = "Rigid_Head";
+	public const string StreamName = "player_camera";
 
 	public string StreamType = "rigidBody";
 	
@@ -60,9 +60,10 @@ public class lsl_rb_stream : MonoBehaviour {
 	void Start () 
 	{
 		
-		head = GameObject.Find("Camera (eye)");
+		//player_camera = GameObject.Find("Camera (eye)");
+        player_camera = gameObject;
 
-		if (head != null)
+        if (player_camera != null)
 			{
 
 			// initialize the array once
@@ -143,13 +144,13 @@ public class lsl_rb_stream : MonoBehaviour {
 					Debug.Log("Rotation"+firstDevice.transform.rot);*/
 			// reuse the array for each sample to reduce allocation costs
 			// currently only for right-hand device
-			currentSample[0] = head.transform.position.x;
-			currentSample[1] = head.transform.position.y;
-			currentSample[2] = head.transform.position.z;
-			currentSample[3] = head.transform.rotation.x;
-			currentSample[4] = head.transform.rotation.y;
-			currentSample[5] = head.transform.rotation.z;
-			currentSample[6] = head.transform.rotation.w;
+			currentSample[0] = player_camera.transform.position.x;
+			currentSample[1] = player_camera.transform.position.y;
+			currentSample[2] = player_camera.transform.position.z;
+			currentSample[3] = player_camera.transform.rotation.x;
+			currentSample[4] = player_camera.transform.rotation.y;
+			currentSample[5] = player_camera.transform.rotation.z;
+			currentSample[6] = player_camera.transform.rotation.w;
 
 			outlet.push_sample(currentSample, liblsl.local_clock());
 

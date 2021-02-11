@@ -187,8 +187,8 @@ public class Manager : MonoBehaviour
         }
     }
 
-//Sending marker
-     void sendMarker()
+    //Sending marker
+    void sendMarker()
     {
         if (!eventMarkerRun)
         {
